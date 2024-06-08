@@ -1,0 +1,23 @@
+{
+  "moduleFileExtensions": ["js", "json", "ts"],
+  "rootDir": "..",
+  "verbose": true,
+  "coverageReporters": ["lcov", "text", "json-summary"],
+  "collectCoverage": true,
+  "detectOpenHandles": true,
+  "forceExit": true,
+  "collectCoverageFrom": ["src/modules/**", "src/*"],
+  "coveragePathIgnorePatterns": [".mock.ts", ".spec.ts", ".dto.ts", ".entity.ts", ".module.ts", "main.ts"],
+  "coverageDirectory": "test/coverage/e2e",
+  "testEnvironment": "node",
+  "moduleDirectories": ["src", "node_modules"],
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "moduleNameMapper": {
+    "^@modules/(.*)$": "<rootDir>/src/modules/$1",
+    "^@shared/(.*)$": "<rootDir>/src/shared/$1",
+    "^@config/(.*)$": "<rootDir>/src/config/$1"
+  }
+}
