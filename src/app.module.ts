@@ -8,6 +8,7 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { mongo_config } from "@config/mongo.config";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import Environment from "@shared/utils/environment.util";
+import { ProductModule } from "@modules/product/product.module";
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import Environment from "@shared/utils/environment.util";
         };
       },
     }),
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

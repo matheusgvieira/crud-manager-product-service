@@ -24,6 +24,7 @@ async function bootstrap() {
 
   await app.listen(3333, () => {
     logger.log("⚡ Server running on http://localhost:3333");
+    logger.log("📄 Server running on http://localhost:3333/docs");
   });
 }
 bootstrap();
