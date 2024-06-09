@@ -2,8 +2,7 @@ import * as request from "supertest";
 import { INestApplication } from "@nestjs/common";
 
 import { getApp } from "../../../../test/testing-module";
-import { ProductCreateResponse } from "../dtos/product-create.dto";
-import { products_create } from "./mocks/product-create.mock";
+import { jwtToken } from "../../../../test/jwt";
 import { Model } from "mongoose";
 import { Product } from "../schemas/product.schema";
 import { getModelToken } from "@nestjs/mongoose";
@@ -43,6 +42,7 @@ describe(`[GET] Product Update`, () => {
     beforeEach(async () => {
       ({ body, status } = await request(app.getHttpServer())
         .put(endpoint.replace(":id", id.toString()))
+        .set("Authorization", `Bearer ${jwtToken}`)
         .send(products_updated));
     });
 

@@ -6,7 +6,8 @@ export const mongo_config = {
   port: process.env.MONGO_PORT?.trim(),
   user: process.env.MONGO_USER?.trim(),
   password: process.env.MONGO_PASSWORD?.trim(),
-  url: `mongodb://${process.env.MONGO_USER?.trim()}:${process.env.MONGO_PASSWORD?.trim()}@${process.env.MONGO_HOST?.trim()}:${process.env.MONGO_PORT?.trim()}`,
+  database: process.env.MONGO_DATABASE?.trim(),
+  url: `mongodb://${process.env.MONGO_USER?.trim()}:${process.env.MONGO_PASSWORD?.trim()}@${process.env.MONGO_HOST?.trim()}:${process.env.MONGO_PORT?.trim()}/${process.env.MONGO_DATABASE?.trim()}`,
 };
 
 export const mongo_config_schema = z.object({
@@ -15,6 +16,7 @@ export const mongo_config_schema = z.object({
   user: z.string(),
   password: z.string(),
   url: z.string(),
+  database: z.string(),
 });
 
 if (!Environment.is_test) mongo_config_schema.parse(mongo_config);

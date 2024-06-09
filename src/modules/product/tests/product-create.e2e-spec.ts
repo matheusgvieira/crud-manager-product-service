@@ -2,6 +2,7 @@ import * as request from "supertest";
 import { INestApplication } from "@nestjs/common";
 
 import { getApp } from "../../../../test/testing-module";
+import { jwtToken } from "../../../../test/jwt";
 import { ProductCreateResponse } from "../dtos/product-create.dto";
 import { products_create } from "./mocks/product-create.mock";
 import { getModelToken } from "@nestjs/mongoose";
@@ -31,6 +32,7 @@ describe(`[POST] Product Create`, () => {
     beforeEach(async () => {
       ({ body, status } = await request(app.getHttpServer())
         .post(endpoint)
+        .set("Authorization", `Bearer ${jwtToken}`)
         .send(products_create));
     });
 

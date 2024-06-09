@@ -9,6 +9,7 @@ import { mongo_config } from "@config/mongo.config";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import Environment from "@shared/utils/environment.util";
 import { ProductModule } from "@modules/product/product.module";
+import { AuthModule } from "@modules/auth/auth.module";
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { ProductModule } from "@modules/product/product.module";
       },
     }),
     ProductModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],

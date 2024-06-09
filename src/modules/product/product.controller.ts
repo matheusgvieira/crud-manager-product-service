@@ -7,10 +7,11 @@ import {
   Delete,
   Put,
   Param,
+  UseGuards,
 } from "@nestjs/common";
 import { ProductService } from "./product.service";
 import { Product } from "./schemas/product.schema";
-import { ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
 import { Documentation } from "@shared/decorators/documentation.decorator";
 import {
   ProductCreateRequest,
@@ -24,12 +25,15 @@ import {
   ProductFindByIdRequest,
   ProductFindByIdResponse,
 } from "./dtos/product-find-id.dto";
+import { JwtAuthGuard } from "@shared/guards/auth.guard";
 
 @ApiTags("Product")
+@ApiBearerAuth()
 @Controller("/product")
 export class ProductController {
   constructor(private readonly productService: ProductService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
   @Documentation({
     title: "Create a product",
@@ -63,6 +67,7 @@ export class ProductController {
     return this.productService.getById(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Delete("/:id")
   @Documentation({
     title: "Delete a product by ID",
@@ -71,6 +76,7 @@ export class ProductController {
     return this.productService.delete(id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @Put("/:id")
   @Documentation({
     title: "Update a product by ID",

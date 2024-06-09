@@ -7,7 +7,14 @@
   "detectOpenHandles": true,
   "forceExit": true,
   "collectCoverageFrom": ["src/modules/**", "src/*"],
-  "coveragePathIgnorePatterns": [".mock.ts", ".spec.ts", ".dto.ts", ".entity.ts", ".module.ts", "main.ts"],
+  "coveragePathIgnorePatterns": [
+    ".mock.ts",
+    ".spec.ts",
+    ".dto.ts",
+    ".entity.ts",
+    ".module.ts",
+    "main.ts"
+  ],
   "coverageDirectory": "test/coverage/e2e",
   "testEnvironment": "node",
   "moduleDirectories": ["src", "node_modules"],
@@ -19,5 +26,6 @@
     "^@modules/(.*)$": "<rootDir>/src/modules/$1",
     "^@shared/(.*)$": "<rootDir>/src/shared/$1",
     "^@config/(.*)$": "<rootDir>/src/config/$1"
-  }
+  },
+  "setupFilesAfterEnv": ["<rootDir>/test/jwt.ts"]
 }

@@ -2,6 +2,7 @@ import * as request from "supertest";
 import { INestApplication } from "@nestjs/common";
 
 import { getApp } from "../../../../test/testing-module";
+import { jwtToken } from "../../../../test/jwt";
 import { products_create } from "./mocks/product-create.mock";
 import { Model } from "mongoose";
 import { Product } from "../schemas/product.schema";
@@ -36,6 +37,7 @@ describe(`[DELETE] Product Find`, () => {
     beforeEach(async () => {
       ({ status } = await request(app.getHttpServer())
         .delete(endpoint.replace(":id", id.toString()))
+        .set("Authorization", `Bearer ${jwtToken}`)
         .send(products_create));
     });
 
