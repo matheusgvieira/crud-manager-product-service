@@ -44,10 +44,13 @@ export class ProductService {
 
     const total_pages = Math.ceil(total / page_size);
 
+    // desc created_at
+
     const data = await this.productModel
       .find({ deleted_at: null })
       .skip((page - 1) * page_size)
       .limit(page_size)
+      .sort({ created_at: -1 })
       .exec();
 
     return {

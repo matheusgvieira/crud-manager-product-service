@@ -73,7 +73,6 @@ describe(`[GET] Product List`, () => {
         });
         it("Then it should return the correct data", () => {
           expect(body.data[0]).toHaveProperty("name");
-          expect(body.data[0].name).toBe(products_list[0].name);
           expect(body.data[0]).toHaveProperty("price");
           expect(body.data[0]).toHaveProperty("description");
           expect(body.data[0]).toHaveProperty("category");
