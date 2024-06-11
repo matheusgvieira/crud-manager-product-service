@@ -19,6 +19,7 @@ async function bootstrap() {
   );
   app.use(morgan("dev"));
   app.enableShutdownHooks();
+  app.enableCors();
 
   new DocumentationUtils().config(app);
 

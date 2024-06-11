@@ -18,7 +18,8 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.json"
+    "test:e2e": "NODE_ENV=test jest --config ./test/jest-e2e.json",
+    "seed": "NODE_ENV=development node dist/seeder"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -37,6 +38,7 @@
     "mongodb-memory-server": "^9.3.0",
     "mongoose": "^8.4.1",
     "morgan": "^1.10.0",
+    "nestjs-seeder": "^0.3.2",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "passport-oauth2-client-password": "^0.1.2",
